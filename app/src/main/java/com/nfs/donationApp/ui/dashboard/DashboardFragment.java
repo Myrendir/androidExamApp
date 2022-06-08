@@ -45,6 +45,10 @@ public class DashboardFragment extends Fragment {
         dashboardViewModel.getDescription().observe(getViewLifecycleOwner(), s -> textView.setText(getArguments().getString("titre")));
         ImageView imageView = (ImageView) binding.imagetest;
 
+        int percentage = getArguments().getInt("percentage",0);
+        binding.progressBar2.setProgress(percentage);
+        binding.percentageTextView2.setText(percentage + " %");
+
         Picasso.get().load(getArguments().getString("image")).into(binding.imagetest);
 
         palierList = getPalier();

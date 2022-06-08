@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private void refreshList(){
+    private void refreshList() {
         bla = new ProjectListAdapter(getContext(), boxList);
         listView.setAdapter(bla);
     }
@@ -100,7 +100,7 @@ public class HomeFragment extends Fragment {
                                     for (int y = 0; y < obj.getJSONArray("media").length(); y++) {
                                         images.add(obj.getJSONArray("media").getJSONObject(y).get("source").toString());
                                     }
-                                    boxList.add(new Project(title,description,images.get(0), (int) Math.round(percentage), date));
+                                    boxList.add(new Project(title, description, images.get(0), (int) Math.round(percentage), date));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
