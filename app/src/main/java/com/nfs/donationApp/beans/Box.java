@@ -1,6 +1,7 @@
 package com.nfs.donationApp.beans;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Box {
     private String title;
@@ -8,14 +9,15 @@ public class Box {
     private String image;
     private int percentage;
     private LocalDate dateEnd;
+    private ArrayList<Palier> paliers;
 
-
-    public Box(String title, String description, String image, int percentage, LocalDate dateEnd) {
+    public Box(String title, String description, String image, int percentage, LocalDate dateEnd, ArrayList<Palier> paliers) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.percentage = percentage;
         this.dateEnd = dateEnd;
+        this.paliers = paliers;
     }
 
     public String getTitle() {
@@ -56,5 +58,13 @@ public class Box {
 
     public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
+    }
+
+    public ArrayList<Palier> getPaliers() {
+        return paliers;
+    }
+
+    public void setPaliers(ArrayList<Palier> paliers) {
+        this.paliers = paliers;
     }
 }

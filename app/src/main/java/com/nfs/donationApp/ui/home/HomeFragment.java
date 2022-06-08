@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.nfs.donationApp.R;
 import com.nfs.donationApp.beans.Box;
+import com.nfs.donationApp.beans.Palier;
 import com.nfs.donationApp.beans.adapter.BoxListAdapter;
 import com.nfs.donationApp.databinding.FragmentHomeBinding;
 
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HomeFragment extends Fragment {
 
@@ -36,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     private BoxListAdapter bla;
     ArrayList<Box> boxList = new ArrayList<Box>();
+    ArrayList<Palier> palierList = new ArrayList<Palier>();
     ArrayList<Box> boxes = new ArrayList<Box>();
     private ListView listView;
 
@@ -66,7 +69,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private void refreshList(){
+    private void refreshList() {
         bla = new BoxListAdapter(getContext(), boxList);
         listView.setAdapter(bla);
     }
@@ -88,7 +91,7 @@ public class HomeFragment extends Fragment {
     private void getApiBox() {
         RequestQueue rq = Volley.newRequestQueue(getContext());
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                "http://192.168.0.74:8000/api/project",
+                "http://192.168.0.27:8000/api/project",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -96,24 +99,49 @@ public class HomeFragment extends Fragment {
                         if (response.length() > 0) {
                             for (int i = 0; i < response.length(); i++) {
                                 try {
+                                    ArrayList<Palier> paliers = new ArrayList<Palier>();
                                     JSONObject obj = response.getJSONObject(i);
                                     Log.d("API EX", obj.get("pledge").toString());
                                     double percentage = Double.parseDouble(obj.get("pledge").toString()) / Double.parseDouble(obj.get("goal").toString()) * 100;
                                     LocalDate date = LocalDate.parse(obj.get("limit_date").toString().split("T")[0], DateTimeFormatter.ISO_DATE);
                                     String title = obj.get("title").toString();
                                     String description = obj.get("description").toString();
+                                    JSONArray result = (JSONArray) obj.get("tier");
 
-                                    boxList.add(new Box(title,description,"https://via.placeholder.com/600x400", (int) Math.round(percentage), date));
+                                    for (
+                                            int j = 0; j < result.length(); j++
+                                    ) {
+                                        JSONObject palierJson = new JSONObject(
+                                                result.toString().split("\\[")[j+1].split("]")[j]);
+
+                                    }
+
+                                    JSONObject paliersJson = new JSONObject(obj.getJSONArray("tier").toString().split("\\[")[1].split("]")[0]);
+
+                                    palierList.add(new Palier(
+                                            paliersJson.get("name").toString(),
+                                            paliersJson.get("description").toString(),
+                                            Float.parseFloat(paliersJson.get("price").toString()),
+                                            LocalDate.parse(paliersJson.get("shipping").toString().split("T")[0], DateTimeFormatter.ISO_DATE)
+                                            ));
+
+                                    boxList.add(
+                                            new Box(
+                                                    title,
+                                                    description, "https://via.placeholder.com/600x400",
+                                                    (int) Math.round(percentage), date, palierList)
+                                    );
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+                                refreshList();
                             }
-                            refreshList();
                         } else {
                             Log.d("API_EX", "empty ressources");
                         }
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -122,5 +150,7 @@ public class HomeFragment extends Fragment {
                 }
         );
         rq.add(request);
+
     }
+
 }

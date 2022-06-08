@@ -48,10 +48,10 @@ public class PalierListAdapter extends BaseAdapter {
         TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView date = (TextView) convertView.findViewById(R.id.date);
 
-        titre.setText(palier.getTitle());
+        titre.setText(palier.getname());
         description.setText(palier.getDescription());
         price.setText(palier.getPrice() + " €");
-        date.setText(palier.getDateEnvoi().toString());
+        date.setText(palier.getshipping().toString());
 
         return convertView;
     }

@@ -48,11 +48,7 @@ public class DashboardFragment extends Fragment {
 
         Picasso.get().load(getArguments().getString("image")).into(binding.imagetest);
 
-        palierList = getPalier();
-        listView = binding.listView;
-        dashboardViewModel.getListView().observe(getViewLifecycleOwner(),listView::addView);
-        pla = new PalierListAdapter(getContext(), palierList);
-        listView.setAdapter(pla);
+
         return root;
     }
 
@@ -62,14 +58,4 @@ public class DashboardFragment extends Fragment {
         binding = null;
     }
 
-    public ArrayList<Palier> getPalier() {
-        ArrayList<Palier> paliers = new ArrayList<>();
-        paliers.add(new Palier("Palier 1","ouais", 5, LocalDate.now()));
-        paliers.add(new Palier("Palier 2","ouais", 10, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        return paliers;
-    }
 }

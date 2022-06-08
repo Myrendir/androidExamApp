@@ -3,24 +3,25 @@ package com.nfs.donationApp.beans;
 import java.time.LocalDate;
 
 public class Palier {
-    private String title;
+    private String name;
     private String description;
-    private int price;
-    private LocalDate dateEnvoi;
+    private Float price;
+    private LocalDate shipping;
 
-    public Palier(String title, String description, int price, LocalDate dateEnvoi) {
-        this.title = title;
+    public Palier(String name, String description, Float price, LocalDate shipping) {
+        this.name = name;
         this.description = description;
         this.price = price;
-        this.dateEnvoi = dateEnvoi;
+        this.shipping = shipping;
     }
 
-    public String getTitle() {
-        return title;
+
+    public String getname() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -31,24 +32,24 @@ public class Palier {
         this.description = description;
     }
 
-    public int getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public LocalDate getDateEnvoi() {
-        return dateEnvoi;
+    public LocalDate getshipping() {
+        return shipping;
     }
 
-    public void setDateEnvoi(LocalDate dateEnvoi) {
-        this.dateEnvoi = dateEnvoi;
+    public void setshipping(LocalDate shipping) {
+        this.shipping = shipping;
     }
 
     @Override
     public String toString() {
-        return "Palier{" + "title=" + title + ", description=" + description + ", price=" + price + ", dateEnvoi=" + dateEnvoi + '}';
+        return "Palier{" + "name=" + name + ", description=" + description + ", price=" + price + ", shipping=" + shipping + '}';
     }
 }
