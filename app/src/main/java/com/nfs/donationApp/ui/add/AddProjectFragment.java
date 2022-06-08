@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.nfs.donationApp.R;
 import com.nfs.donationApp.databinding.FragmentAddProjectBinding;
+import com.nfs.donationApp.ui.home.HomeFragment;
 
 public class AddProjectFragment extends Fragment {
 
@@ -21,6 +24,14 @@ public class AddProjectFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(AddProjectFragment.this)
+                        .navigate(R.id.action_add_project_to_home);
+            }
+        });
     }
 
     @Override

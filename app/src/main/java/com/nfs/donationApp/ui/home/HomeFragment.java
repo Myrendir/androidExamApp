@@ -78,14 +78,6 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-//    public ArrayList<Box> getBoxes() {
-//        boxes.add(new Box("titre 1", "description 1", "https://via.placeholder.com/600x400", 85, LocalDate.now()));
-//        boxes.add(new Box("titre 2", "description 2", "https://via.placeholder.com/600x400", 40, LocalDate.now()));
-//        boxes.add(new Box("titre 3", "description 3", "https://via.placeholder.com/600x400", 20, LocalDate.now()));
-//        boxes.add(new Box("titre 4", "description 4", "https://via.placeholder.com/600x400", 25, LocalDate.now()));
-//        return boxes;
-//    }
-
     private void getApiBox() {
         RequestQueue rq = Volley.newRequestQueue(getContext());
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
@@ -104,10 +96,10 @@ public class HomeFragment extends Fragment {
                                     String title = obj.get("title").toString();
                                     String description = obj.get("description").toString();
                                     ArrayList<String> images = new ArrayList<>();
+
                                     for (int y = 0; y < obj.getJSONArray("media").length(); y++) {
                                         images.add(obj.getJSONArray("media").getJSONObject(y).get("source").toString());
                                     }
-
                                     boxList.add(new Project(title,description,images.get(0), (int) Math.round(percentage), date));
                                 } catch (Exception e) {
                                     e.printStackTrace();

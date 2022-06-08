@@ -32,6 +32,10 @@
         android:id="@+id/add_project"
         android:name="com.nfs.donationApp.ui.add.AddProjectFragment"
         android:label="@string/title_add_project"
-        tools:layout="@layout/fragment_add_project" />
+        tools:layout="@layout/fragment_add_project" >
+        <action
+            android:id="@+id/action_add_project_to_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
 </navigation>

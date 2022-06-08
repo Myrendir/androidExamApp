@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-6dp"
         android:layout_marginEnd="10dp"
-        android:text="Ajouter"
+        android:text="Ajouter un projet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/listView"
         tools:ignore="MissingConstraints" />
