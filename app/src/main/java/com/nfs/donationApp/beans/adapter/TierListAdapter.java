@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.nfs.donationApp.R;
-import com.nfs.donationApp.beans.Palier;
+import com.nfs.donationApp.beans.Tier;
 
 import java.util.List;
 
-public class PalierListAdapter extends BaseAdapter {
+public class TierListAdapter extends BaseAdapter {
     private Context context;
-    private List<Palier> paliers;
+    private List<Tier> paliers;
 
-    public PalierListAdapter(Context context, List<Palier> paliers) {
+    public TierListAdapter(Context context, List<Tier> paliers) {
         this.context = context;
         this.paliers = paliers;
     }
@@ -42,7 +42,7 @@ public class PalierListAdapter extends BaseAdapter {
                     inflate(R.layout.palier, parent, false);
         }
 
-        Palier palier = (Palier) getItem(position);
+        Tier palier = (Tier) getItem(position);
         TextView titre = (TextView) convertView.findViewById(R.id.titre);
         TextView description = (TextView) convertView.findViewById(R.id.description);
         TextView price = (TextView) convertView.findViewById(R.id.price);

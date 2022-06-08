@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,8 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.nfs.donationApp.R;
-import com.nfs.donationApp.beans.Box;
-import com.nfs.donationApp.beans.adapter.BoxListAdapter;
+import com.nfs.donationApp.beans.Project;
+import com.nfs.donationApp.beans.adapter.ProjectListAdapter;
 import com.nfs.donationApp.databinding.FragmentHomeBinding;
 
 import org.json.JSONArray;
@@ -34,9 +35,9 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private BoxListAdapter bla;
-    ArrayList<Box> boxList = new ArrayList<Box>();
-    ArrayList<Box> boxes = new ArrayList<Box>();
+    private ProjectListAdapter bla;
+    ArrayList<Project> boxList = new ArrayList<Project>();
+    ArrayList<Project> boxes = new ArrayList<Project>();
     private ListView listView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment {
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             //get Item at position
-            Box box = (Box) listView.getItemAtPosition(position);
+            Project box = (Project) listView.getItemAtPosition(position);
             Bundle bundle = new Bundle();
             bundle.putString("titre", box.getTitle());
             bundle.putString("description", box.getDescription());
@@ -61,13 +62,13 @@ public class HomeFragment extends Fragment {
         });
 
         getApiBox();
-        bla = new BoxListAdapter(getContext(), boxList);
+        bla = new ProjectListAdapter(getContext(), boxList);
         listView.setAdapter(bla);
         return root;
     }
 
     private void refreshList(){
-        bla = new BoxListAdapter(getContext(), boxList);
+        bla = new ProjectListAdapter(getContext(), boxList);
         listView.setAdapter(bla);
     }
 
@@ -88,7 +89,7 @@ public class HomeFragment extends Fragment {
     private void getApiBox() {
         RequestQueue rq = Volley.newRequestQueue(getContext());
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                "http://192.168.1.78:8000/api/project",
+                "http://192.168.0.27:8000/api/project",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -103,7 +104,7 @@ public class HomeFragment extends Fragment {
                                     String title = obj.get("title").toString();
                                     String description = obj.get("description").toString();
 
-                                    boxList.add(new Box(title,description,"https://via.placeholder.com/600x400", (int) Math.round(percentage), date));
+                                    boxList.add(new Project(title,description,"https://via.placeholder.com/600x400", (int) Math.round(percentage), date));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -122,5 +123,17 @@ public class HomeFragment extends Fragment {
                 }
         );
         rq.add(request);
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_add_project);
+            }
+        });
     }
 }

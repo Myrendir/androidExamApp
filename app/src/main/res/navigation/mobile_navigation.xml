@@ -8,18 +8,30 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.nfs.donationApp.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/title_projets"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_add_project"
+            app:destination="@id/add_project" />
+        />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.nfs.donationApp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_detail"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.nfs.donationApp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_profil"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/add_project"
+        android:name="com.nfs.donationApp.ui.add.AddProjectFragment"
+        android:label="@string/title_add_project"
+        tools:layout="@layout/fragment_add_project" />
+
 </navigation>

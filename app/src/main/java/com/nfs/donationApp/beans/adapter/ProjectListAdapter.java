@@ -10,18 +10,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nfs.donationApp.R;
-import com.nfs.donationApp.beans.Box;
+import com.nfs.donationApp.beans.Project;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class BoxListAdapter extends BaseAdapter {
+public class ProjectListAdapter extends BaseAdapter {
 
     private Context context; //context
-    private ArrayList<Box> items; //data source of the list adapter
+    private ArrayList<Project> items; //data source of the list adapter
 
     //public constructor
-    public BoxListAdapter(Context context, ArrayList<Box> items) {
+    public ProjectListAdapter(Context context, ArrayList<Project> items) {
         this.context = context;
         this.items = items;
     }
@@ -46,11 +46,11 @@ public class BoxListAdapter extends BaseAdapter {
         // inflate the layout for each list row
         if (convertView == null) {
             convertView = LayoutInflater.from(context).
-                    inflate(R.layout.box, parent, false);
+                    inflate(R.layout.project, parent, false);
         }
 
         // get current item to be displayed
-        Box currentItem = (Box) getItem(position);
+        Project currentItem = (Project) getItem(position);
 
         // get the TextView for item name and item description
         TextView textViewItemName = (TextView)

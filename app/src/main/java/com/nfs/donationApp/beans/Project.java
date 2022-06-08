@@ -2,7 +2,7 @@ package com.nfs.donationApp.beans;
 
 import java.time.LocalDate;
 
-public class Box {
+public class Project {
     private String title;
     private String description;
     private String image;
@@ -10,7 +10,7 @@ public class Box {
     private LocalDate dateEnd;
 
 
-    public Box(String title, String description, String image, int percentage, LocalDate dateEnd) {
+    public Project(String title, String description, String image, int percentage, LocalDate dateEnd) {
         this.title = title;
         this.description = description;
         this.image = image;

@@ -13,9 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.nfs.donationApp.R;
-import com.nfs.donationApp.beans.Palier;
-import com.nfs.donationApp.beans.adapter.PalierListAdapter;
+import com.nfs.donationApp.beans.Tier;
+import com.nfs.donationApp.beans.adapter.TierListAdapter;
 import com.nfs.donationApp.databinding.FragmentDashboardBinding;
 import com.squareup.picasso.Picasso;
 
@@ -26,8 +25,8 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
-    private PalierListAdapter pla;
-    private ArrayList<Palier> palierList;
+    private TierListAdapter pla;
+    private ArrayList<Tier> palierList;
     private ListView listView;
 
 
@@ -51,7 +50,7 @@ public class DashboardFragment extends Fragment {
         palierList = getPalier();
         listView = binding.listView;
         dashboardViewModel.getListView().observe(getViewLifecycleOwner(),listView::addView);
-        pla = new PalierListAdapter(getContext(), palierList);
+        pla = new TierListAdapter(getContext(), palierList);
         listView.setAdapter(pla);
         return root;
     }
@@ -62,14 +61,14 @@ public class DashboardFragment extends Fragment {
         binding = null;
     }
 
-    public ArrayList<Palier> getPalier() {
-        ArrayList<Palier> paliers = new ArrayList<>();
-        paliers.add(new Palier("Palier 1","ouais", 5, LocalDate.now()));
-        paliers.add(new Palier("Palier 2","ouais", 10, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
-        paliers.add(new Palier("Palier 3","ouais", 7, LocalDate.now()));
+    public ArrayList<Tier> getPalier() {
+        ArrayList<Tier> paliers = new ArrayList<>();
+        paliers.add(new Tier("Palier 1","ouais", 5, LocalDate.now()));
+        paliers.add(new Tier("Palier 2","ouais", 10, LocalDate.now()));
+        paliers.add(new Tier("Palier 3","ouais", 7, LocalDate.now()));
+        paliers.add(new Tier("Palier 3","ouais", 7, LocalDate.now()));
+        paliers.add(new Tier("Palier 3","ouais", 7, LocalDate.now()));
+        paliers.add(new Tier("Palier 3","ouais", 7, LocalDate.now()));
         return paliers;
     }
 }

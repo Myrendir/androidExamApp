@@ -2,13 +2,13 @@ package com.nfs.donationApp.beans;
 
 import java.time.LocalDate;
 
-public class Palier {
+public class Tier {
     private String title;
     private String description;
     private int price;
     private LocalDate dateEnvoi;
 
-    public Palier(String title, String description, int price, LocalDate dateEnvoi) {
+    public Tier(String title, String description, int price, LocalDate dateEnvoi) {
         this.title = title;
         this.description = description;
         this.price = price;
