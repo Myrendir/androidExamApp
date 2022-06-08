@@ -7,66 +7,75 @@
 
     <LinearLayout
         android:id="@+id/mainLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/black"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="-1dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="378dp"
-            android:layout_height="27dp"
-            android:gravity="center"
-            android:paddingStart="20dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="18dp"
-            tools:layout_editor_absoluteY="158dp" />
-
-        <TextView
-            android:id="@+id/percentageTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="-10dp"
-            android:text="0%"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toEndOf="@+id/progressBar"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="185dp" />
-
-        <TextView
-            android:id="@+id/TitleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Titre"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="207dp" />
-
-        <TextView
-            android:id="@+id/DescriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="23dp"
-            android:text="Description"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="232dp" />
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="266dp"
+        android:layout_height="14dp"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="141dp" />
 
+    <TextView
+        android:id="@+id/percentageTextView"
+        android:layout_width="104dp"
+        android:layout_height="17dp"
+        android:gravity="center"
+        android:text="0%"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+        app:layout_constraintStart_toEndOf="@+id/progressBar"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <TextView
+        android:id="@+id/DescriptionTextView"
+        android:layout_width="266dp"
+        android:layout_height="39dp"
+        android:text="Description"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <Button
+        android:id="@+id/donateProject"
+        android:layout_width="161dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="24dp"
+        android:background="#ED6A5A"
+        android:text="CONTRIBUER"
+        app:layout_constraintBottom_toTopOf="@+id/DescriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="195dp"
+        android:background="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="72dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/TitleTextView"
+        android:layout_width="122dp"
+        android:layout_height="50dp"
+        android:text="Titre"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="14dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
