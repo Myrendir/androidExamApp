@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
     private void getApiBox() {
         RequestQueue rq = Volley.newRequestQueue(getContext());
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                "http://192.168.0.27:8000/api/project",
+                "http://192.168.1.78:8000/api/project",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
