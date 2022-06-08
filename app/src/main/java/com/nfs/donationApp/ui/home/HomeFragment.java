@@ -103,8 +103,12 @@ public class HomeFragment extends Fragment {
                                     LocalDate date = LocalDate.parse(obj.get("limit_date").toString().split("T")[0], DateTimeFormatter.ISO_DATE);
                                     String title = obj.get("title").toString();
                                     String description = obj.get("description").toString();
+                                    ArrayList<String> images = new ArrayList<>();
+                                    for (int y = 0; y < obj.getJSONArray("media").length(); y++) {
+                                        images.add(obj.getJSONArray("media").getJSONObject(y).get("source").toString());
+                                    }
 
-                                    boxList.add(new Project(title,description,"https://via.placeholder.com/600x400", (int) Math.round(percentage), date));
+                                    boxList.add(new Project(title,description,images.get(0), (int) Math.round(percentage), date));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
